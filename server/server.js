@@ -7,6 +7,6 @@ var app = express();
 
 app.use(express.static(publicPath)); //This will be the root of our web app (front end)
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Server is up on port ${port}`)
 });
