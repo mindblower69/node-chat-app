@@ -13,6 +13,17 @@ app.use(express.static(publicPath)); //This will be the root of our web app (fro
 
 io.on('connection', (socket) => {
   console.log('New user connected');
+
+  socket.emit('newMessage', {//custom emit same name as custom listener client side, the second argument can be any form of value, but for data usually it would be an object as shown here
+    from: '4502644188',
+    text: 'Hey its Gian from Match.com',
+    createdAt: 123
+  });
+
+  socket.on('createMessage', (createMessage) => {
+    console.log('createMessage', createMessage);
+  });
+
   socket.on('disconnect', () => {
     console.log('User was disconnected')
   });
