@@ -8,8 +8,12 @@ socket.on('disconnect', function() {
   console.log('Disconnected from server')
 });
 
-
 socket.on('newMessage', function(message) { //custom method  //Since this time we are sending data with the emition, we can declare a variable to use internally containing such data
+  /*var template = jQuery('#message-template').html();
+  var html = Mustache.render(template);
+
+  jQuery('#messages').append(html);*/
+
   var formattedTime = moment(message.createdAt).format('h:mm a')
   var li = jQuery('<li></li>');
   li.text(`${message.from} ${formattedTime}: ${message.text}`);
